@@ -1,0 +1,73 @@
+{% from 'bootstrap5/form.html' import render_form %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .container{
+
+            display: flex;
+            height: 60vh;
+            width: 25vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #9EC8B9;
+            color: #092635;
+            margin-top: 20vh;
+        }
+        body{
+            font-size: medium;
+            background-color: #5C8374;
+        }
+        form{
+            font-size: large;
+            padding: 1rem;
+        }
+        input{
+            border-radius: 23px;
+            border: none;
+            text-align: center;
+            height: 20px;
+        }
+
+        form > input{
+            background-color: #092635;
+            color: #9EC8B9;
+            font-size: medium;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            height: 30px;
+            cursor: pointer;
+        }
+        #copy-btn{
+            background-color: white;
+            border: none;
+            cursor: pointer;
+        }
+       
+    </style>
+</head>
+<body>
+    <center>
+    <div class="container">
+    <h1>Generate your Password</h1>
+    {{ render_form(form , button_style='primary') }}
+    <input type="text" value="{{ random_pass }}" style="width: 300px; height: 35px; margin-top: 2rem; font-weight: 700;" id="random-pass">
+    <button  id = 'copy-btn' onclick="copyText()" style="margin-top: -25px; margin-left: 250px;"><i class="fa-regular fa-copy"></i></button>
+    </div>
+</center>
+
+<script>
+    function copyText(){
+        let password = document.getElementById('random-pass');
+        console.log(password.value)
+        navigator.clipboard.writeText(password.value);
+    }
+</script>
+</body>
+</html>
